@@ -40,8 +40,14 @@ export class News extends Component {
   ];
   constructor() {
     super();
-    console.log("hemlo constructor");
-    this.state = { articles: this.articles, loading: false };
+    this.state = { articles: [], loading: false };
+  }
+  async componentDidMount() {
+    let url =
+      "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=193f9cca9f084044a67aa03f114316c8";
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState({ articles: parsedData.articles });
   }
   render() {
     return (
@@ -50,10 +56,12 @@ export class News extends Component {
         <div className="row">
           {this.state.articles.map((element) => {
             return (
-              <div className="col-md-4" key={element.url}>
+              <div className="col-md-4 my-2" key={element.url}>
                 <NewsItems
-                  title={element.title.slice(0, 45)}
-                  description={element.description.slice(0, 88)}
+                  title={element.title ? element.title.slice(0, 44) : ""}
+                  description={
+                    element.description ? element.description.slice(0, 75) : ""
+                  }
                   imageUrl={element.urlToImage}
                   newsUrl={element.url}
                 />
