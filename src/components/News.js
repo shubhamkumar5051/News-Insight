@@ -2,39 +2,64 @@ import React, { Component } from "react";
 import NewsItems from "./NewsItems";
 
 export class News extends Component {
+  articles = [
+    {
+      source: {
+        id: "espn-cric-info",
+        name: "ESPN Cric Info",
+      },
+      author: null,
+      title:
+        "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+      description:
+        "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+      url: "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+      urlToImage:
+        "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+      publishedAt: "2020-04-27T11:41:47Z",
+      content:
+        "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]",
+    },
+    {
+      source: {
+        id: "espn-cric-info",
+        name: "ESPN Cric Info",
+      },
+      author: null,
+      title:
+        "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+      description:
+        "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+      url: "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+      urlToImage:
+        "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+      publishedAt: "2020-03-30T15:26:05Z",
+      content:
+        "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]",
+    },
+  ];
+  constructor() {
+    super();
+    console.log("hemlo constructor");
+    this.state = { articles: this.articles, loading: false };
+  }
   render() {
     return (
       <div className="container my-3">
-        this is a news components
+        <h2>News Insight</h2>
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <NewsItems
-              title="title 1"
-              description="wow +1"
-              imgsrc="https://images.unsplash.com/photo-1630692158486-f1e2dd74142b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            />
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <NewsItems
-              title="title 2"
-              description="wow +2"
-              imgsrc="https://images.unsplash.com/photo-1630702379394-e202e2fbe01e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=717&q=80"
-            />
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <NewsItems
-              title="title 3"
-              description="wow +3"
-              imgsrc="https://images.unsplash.com/photo-1597460236680-335638265632?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=740&q=80"
-            />
-          </div>
-          {/* <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12 ">
-            <NewsItems
-              title="title 4"
-              description="wow +4"
-              imgsrc="https://images.unsplash.com/photo-1557786372-6523bff1f99b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
-            />
-          </div> */}
+          {this.state.articles.map((element) => {
+            return (
+              <div className="col-md-4" key={element.url}>
+                <NewsItems
+                  title={element.title.slice(0, 45)}
+                  description={element.description.slice(0, 88)}
+                  imageUrl={element.urlToImage}
+                  newsUrl={element.url}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     );
