@@ -9,13 +9,18 @@ export class NewsItems extends Component {
           <img
             src={
               !imageUrl
-                ? "https://images.unsplash.com/photo-1593642532454-e138e28a63f4?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                ? "https://images.indianexpress.com/2021/08/Apple-iPhone-12-1.jpg"
                 : imageUrl
             }
             className="card-img-top"
             alt="..."
           />
-          <div className="card-body">
+          <div
+            className="card-body"
+            style={{
+              background: `linear-gradient(to right,rgb(116 197 193),rgb(230 239 237))`,
+            }}
+          >
             <h5 className="card-title">{title}..</h5>
             <p className="card-text">{description}...</p>
             <a
@@ -32,5 +37,4 @@ export class NewsItems extends Component {
     );
   }
 }
-
 export default NewsItems;

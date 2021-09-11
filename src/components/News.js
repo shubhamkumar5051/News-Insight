@@ -1,14 +1,22 @@
 import React, { Component } from "react";
 import NewsItems from "./NewsItems";
 import Spinner from "./Spinner";
-
+import PropTypes from "prop-types"; //impt
 export class News extends Component {
+  static defaultProps = {
+    country: "in",
+    pageSize: 3,
+  };
+  static propTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+  };
   constructor() {
     super();
     this.state = { articles: [], loading: false, page: 1 };
   }
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=1&pageSize=${this.props.pageSize}`;
     this.setState({
       loading: true,
     });
@@ -27,7 +35,9 @@ export class News extends Component {
     ) {
       console.log("khatam bye bye");
     } else {
-      let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
+      let url = `https://newsapi.org/v2/top-headlines?country=${
+        this.props.country
+      }&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
         this.state.page + 1
       }&pageSize=${this.props.pageSize}`;
       this.setState({
@@ -43,7 +53,9 @@ export class News extends Component {
     }
   };
   handlePrevClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${
+      this.props.country
+    }&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
       this.state.page - 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({
@@ -60,8 +72,8 @@ export class News extends Component {
   render() {
     return (
       <div className="container my-3">
-        <div className="text-center">
-          <h2>News Insight - Breaking News</h2>
+        <div className="text-center my-2">
+          <h2 style={{ margin: `25px` }}>News Insight - Breaking News</h2>
           {this.state.loading && <Spinner />}
           {/* {this.state.loading} yadi true hai toh spinner ko dikhaye */}
         </div>
@@ -110,5 +122,4 @@ export class News extends Component {
     );
   }
 }
-
 export default News;
