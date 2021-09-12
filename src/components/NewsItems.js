@@ -2,10 +2,11 @@ import React, { Component } from "react";
 
 export class NewsItems extends Component {
   render() {
-    let { title, description, imageUrl, newsUrl } = this.props;
+    let { title, description, imageUrl, newsUrl, author, date, source } =
+      this.props;
     return (
       <div>
-        <div className="card">
+        <div className="card my-3 mx-1">
           <img
             src={
               !imageUrl
@@ -21,7 +22,15 @@ export class NewsItems extends Component {
               background: `linear-gradient(to right,rgb(116 197 193),rgb(230 239 237))`,
             }}
           >
-            <h5 className="card-title">{title}..</h5>
+            <h5 className="card-title">
+              {title}
+              <span
+                class="position-absolute translate-middle badge rounded-pill bg-danger"
+                style={{ left: "50%", zIndex: `1`, bottom: "96%" }}
+              >
+                {!source ? "Unknown" : source}
+              </span>
+            </h5>
             <p className="card-text">{description}...</p>
             <a
               href={newsUrl}
@@ -31,6 +40,20 @@ export class NewsItems extends Component {
             >
               Read More
             </a>
+
+            <p
+              className="card-text"
+              style={{
+                margin: `10px 0px 0px 0px`,
+                fontWeight: "bold",
+                fontStyle: "italic",
+              }}
+            >
+              <small className="text-muted">
+                By:- {!author ? "unknown" : author} on{" "}
+                {new Date(date).toGMTString()}
+              </small>
+            </p>
           </div>
         </div>
       </div>
