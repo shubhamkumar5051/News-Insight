@@ -6,17 +6,19 @@ export class News extends Component {
   static defaultProps = {
     country: "in",
     pageSize: 3,
+    category: "sports",
   };
   static propTypes = {
     country: PropTypes.string,
     pageSize: PropTypes.number,
+    category: PropTypes.string,
   };
   constructor() {
     super();
     this.state = { articles: [], loading: false, page: 1 };
   }
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=193f9cca9f084044a67aa03f114316c8&page=1&pageSize=${this.props.pageSize}`;
     this.setState({
       loading: true,
     });
@@ -37,7 +39,9 @@ export class News extends Component {
     } else {
       let url = `https://newsapi.org/v2/top-headlines?country=${
         this.props.country
-      }&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
+      }&category=${
+        this.props.category
+      }&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
         this.state.page + 1
       }&pageSize=${this.props.pageSize}`;
       this.setState({
@@ -55,7 +59,9 @@ export class News extends Component {
   handlePrevClick = async () => {
     let url = `https://newsapi.org/v2/top-headlines?country=${
       this.props.country
-    }&category=business&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
+    }&category=${
+      this.props.category
+    }&apiKey=193f9cca9f084044a67aa03f114316c8&page=${
       this.state.page - 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({
