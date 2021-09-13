@@ -7,7 +7,7 @@ export class NavBar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/general">
+            <Link className="navbar-brand" to="/insight">
               Insight
             </Link>
             <button
@@ -30,7 +30,7 @@ export class NavBar extends Component {
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    to="/general"
+                    to="/home"
                   >
                     Home
                   </Link>

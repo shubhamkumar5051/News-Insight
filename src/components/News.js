@@ -35,7 +35,7 @@ export class News extends Component {
       this.state.page + 1 >
       Math.ceil(this.state.totalResults / this.props.pageSize)
     ) {
-      console.log("khatam bye bye");
+      
     } else {
       let url = `https://newsapi.org/v2/top-headlines?country=${
         this.props.country
