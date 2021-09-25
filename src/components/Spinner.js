@@ -5,7 +5,7 @@ export default class Spinner extends Component {
     return (
       <div className="d-flex align-items-center justify-content-center">
         <div>
-          <img src={loading} alt="loading" />
+          <img className="my-3 imgUser" src={loading} alt="loading" />
         </div>
       </div>
     );
