@@ -6,7 +6,7 @@ import PropTypes from "prop-types"; //impt
 export class News extends Component {
   static defaultProps = {
     country: "in",
-    pageSize: 6,
+    pageSize: 5,
     category: "general",
   };
   static propTypes = {
@@ -53,9 +53,7 @@ export class News extends Component {
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=193f9cca9f084044a67aa03f114316c8&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    // this.setState({
-    //   loading: false,
-    // });
+
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({

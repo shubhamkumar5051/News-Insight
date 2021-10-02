@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import news from "./news.png";
+
 export class NavBar extends Component {
   render() {
     return (
@@ -8,13 +8,6 @@ export class NavBar extends Component {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/insight">
-              <img
-                className="mx-1"
-                style={{ width: 30 }}
-                src={news}
-                alt=""
-                srcset=""
-              />
               Insight
             </Link>
             <button
@@ -32,14 +25,14 @@ export class NavBar extends Component {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav me-auto mb-lg-0 mx-auto">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link
                     className="nav-link active"
                     aria-current="page"
                     to="/home"
                   >
-                    <i class="fas fa-home mx-1"></i>Home
+                    Home
                   </Link>
                 </li>
                 {/* <li className="nav-item">
@@ -50,37 +43,37 @@ export class NavBar extends Component {
 
                 <li className="nav-item">
                   <Link className="nav-link" to="/business">
-                    <i class="fas fa-briefcase mx-1"></i> Business
+                    Business
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/sports">
-                    <i class="fas fa-volleyball-ball mx-1"></i> Sports
+                    Sports
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/science">
-                    <i class="fas fa-rocket mx-1"></i> Science
+                    Science
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/health">
-                    <i class="fas fa-syringe mx-1"></i> Health
+                    Health
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/general">
-                    <i class="far fa-newspaper mx-1"></i> General
+                    General
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/technology">
-                    <i class="fas fa-laptop-code mx-1"></i> Technology
+                    Technology
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/entertainment">
-                    <i class="fas fa-glass-cheers mx-1"></i> Entertainment
+                    Entertainment
                   </Link>
                 </li>
               </ul>
